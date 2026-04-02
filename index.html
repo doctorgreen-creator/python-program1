@@ -1,63 +1,220 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>Ультра сайт</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f0f8ff;
-        }
-        h1 {
-            color: #333;
-        }
-        button {
-            margin: 10px 0;
-            padding: 10px 20px;
-        }
-        #clickCount {
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Лучший сайт</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* Светлая тема по умолчанию */
+  body.light {
+    background-color: #fff;
+    color: #000;
+  }
+  /* Тёмная тема */
+  body.dark {
+    background-color: #333;
+    color: #fff;
+  }
+
+  header {
+    background-color: #4CAF50;
+    padding: 10px;
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    background: #555;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  nav button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .section {
+    display: none;
+    padding: 20px;
+  }
+
+  /* Активный раздел */
+  .section.active {
+    display: block;
+  }
+
+  /* Карточки */
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .card {
+    background-color: inherit;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: calc(33% - 20px);
+    padding: 10px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    transition: box-shadow 0.3s;
+  }
+  .card:hover {
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* Галерея изображений */
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: transform 0.2s;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.1);
+    border-color: #4CAF50;
+  }
+
+  /* Поле для смены темы */
+  .theme-toggle {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
 </head>
-<body>
-    <h1>Добро пожаловать на супер сайт!</h1>
-    <p id="text">Нажмите кнопку ниже, чтобы изменить этот текст.</p>
-    
-    <!-- Кнопка для изменения текста -->
-    <button onclick="changeText()">Кнопка изменить текст</button>
-    
-    <!-- Поле ввода -->
-    <div>
-        <input type="text" id="userInput" placeholder="Введите что-нибудь" />
-        <button onclick="showInput()">Показать введённое</button>
-    </div>
-    <p id="displayInput"></p>
+<body class="light">
 
-    <!-- Счётчик кликов -->
-    <div>
-        <button onclick="incrementCounter()">Кликни меня</button>
-        <p>Вы нажави кнопку раз: <span id="clickCount">0</span></p>
-    </div>
+<header>
+  <h1>Лучший сайт с множеством функций!</h1>
+</header>
 
-    <script>
-        // функция для изменения текста
-        function changeText() {
-            document.getElementById('text').innerText = 'Текст изменён! Молодец!';
-        }
-        // функция для отображения введённого слова
-        function showInput() {
-            const input = document.getElementById('userInput').value;
-            document.getElementById('displayInput').innerText = 'Вы ввели: ' + input;
-        }
-        // переменная счетчика
-        let count = 0;
-        // функция для увеличения счетчика
-        function incrementCounter() {
-            count++;
-            document.getElementById('clickCount').innerText = count;
-        }
-    </script>
+<nav>
+  <button onclick="showSection('home')">Главная</button>
+  <button onclick="showSection('cards')">Карточки</button>
+  <button onclick="showSection('gallery')">Галерея</button>
+  <button onclick="showSection('settings')">Настройки</button>
+</nav>
+
+<!-- Раздел "Главная" -->
+<div id="home" class="section active">
+  <h2>Добро пожаловать!</h2>
+  <p>Здесь ты найдёшь разные функции и развлечения.</p>
+  <button onclick="changeGreeting()">Кликни меня!</button>
+  <p id="greeting">Привет! Надеюсь, тебе нравится этот сайт.</p>
+</div>
+
+<!-- Раздел "Карточки" -->
+<div id="cards" class="section">
+  <h2>Карточки с информацией</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Карточка 1</h3>
+      <p>Это первая карточка. Тут можно разместить описание.</p>
+    </div>
+    <div class="card">
+      <h3>Карточка 2</h3>
+      <p>Вторая карточка. Информация может быть любой.</p>
+    </div>
+    <div class="card">
+      <h3>Карточка 3</h3>
+      <p>А это третья. Многофункционально!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Раздел "Галерея" -->
+<div id="gallery" class="section">
+  <h2>Галерея изображений</h2>
+  <div class="gallery" id="imageGallery">
+    <img src="https://via.placeholder.com/100?text=1" alt="Image 1" />
+    <img src="https://via.placeholder.com/100?text=2" alt="Image 2" />
+    <img src="https://via.placeholder.com/100?text=3" alt="Image 3" />
+    <img src="https://via.placeholder.com/100?text=4" alt="Image 4" />
+    <img src="https://via.placeholder.com/100?text=5" alt="Image 5" />
+  </div>
+  <h3>Кликните на изображение чтобы увеличить:</h3>
+  <img id="largeImage" src="" alt="" style="max-width: 80%; display: none; margin-top: 20px; border: 2px solid #333; border-radius: 8px;" />
+</div>
+
+<!-- Раздел "Настройки" -->
+<div id="settings" class="section">
+  <h2>Настройки темы</h2>
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()">Переключить тему (светлая / тёмная)</button>
+  </div>
+</div>
+
+<script>
+  // Переключение разделов
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+  }
+
+  // Функция для смены приветствия
+  function changeGreeting() {
+    const greeting = document.getElementById('greeting');
+    greeting.innerText = 'Ты нажал на кнопку! Молодец!';
+  }
+
+  // Галерея: увеличение изображения при клике
+  document.getElementById('imageGallery').addEventListener('click', function(e) {
+    if (e.target.tagName === 'IMG') {
+      const largeImg = document.getElementById('largeImage');
+      largeImg.src = e.target.src;
+      largeImg.style.display = 'block';
+      largeImg.alt = e.target.alt;
+    }
+  });
+
+  // Переключение темы
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+    document.body.classList.toggle('light');
+  }
+</script>
+
 </body>
 </html>
