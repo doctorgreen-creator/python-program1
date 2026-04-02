@@ -2,10 +2,62 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <title>Мой первый сайт</title>
+    <title>Ультра сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+        }
+        #clickCount {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Привет, мир!</h1>
-    <p>Это мой первый сайт на HTML.</p>
+    <h1>Добро пожаловать на супер сайт!</h1>
+    <p id="text">Нажмите кнопку ниже, чтобы изменить этот текст.</p>
+    
+    <!-- Кнопка для изменения текста -->
+    <button onclick="changeText()">Кнопка изменить текст</button>
+    
+    <!-- Поле ввода -->
+    <div>
+        <input type="text" id="userInput" placeholder="Введите что-нибудь" />
+        <button onclick="showInput()">Показать введённое</button>
+    </div>
+    <p id="displayInput"></p>
+
+    <!-- Счётчик кликов -->
+    <div>
+        <button onclick="incrementCounter()">Кликни меня</button>
+        <p>Вы нажави кнопку раз: <span id="clickCount">0</span></p>
+    </div>
+
+    <script>
+        // функция для изменения текста
+        function changeText() {
+            document.getElementById('text').innerText = 'Текст изменён! Молодец!';
+        }
+        // функция для отображения введённого слова
+        function showInput() {
+            const input = document.getElementById('userInput').value;
+            document.getElementById('displayInput').innerText = 'Вы ввели: ' + input;
+        }
+        // переменная счетчика
+        let count = 0;
+        // функция для увеличения счетчика
+        function incrementCounter() {
+            count++;
+            document.getElementById('clickCount').innerText = count;
+        }
+    </script>
 </body>
 </html>
