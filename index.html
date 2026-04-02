@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Лучший сайт</title>
+<title>Максимальный сайт с функциями</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -12,15 +12,13 @@
     transition: background-color 0.3s, color 0.3s;
   }
 
-  /* Светлая тема по умолчанию */
   body.light {
     background-color: #fff;
     color: #000;
   }
-  /* Тёмная тема */
   body.dark {
-    background-color: #333;
-    color: #fff;
+    background-color: #222;
+    color: #eee;
   }
 
   header {
@@ -33,13 +31,13 @@
     display: flex;
     justify-content: center;
     background: #555;
+    flex-wrap: wrap;
   }
-
   nav button {
     background: none;
     border: none;
     color: #fff;
-    padding: 14px 20px;
+    padding: 12px 20px;
     cursor: pointer;
     font-size: 16px;
   }
@@ -52,8 +50,6 @@
     display: none;
     padding: 20px;
   }
-
-  /* Активный раздел */
   .section.active {
     display: block;
   }
@@ -64,7 +60,6 @@
     flex-wrap: wrap;
     gap: 15px;
   }
-
   .card {
     background-color: inherit;
     border: 1px solid #ccc;
@@ -78,13 +73,12 @@
     box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
   }
 
-  /* Галерея изображений */
+  /* Галерея */
   .gallery {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
   }
-
   .gallery img {
     width: 100px;
     height: 100px;
@@ -94,75 +88,102 @@
     border-radius: 4px;
     transition: transform 0.2s;
   }
-
   .gallery img:hover {
     transform: scale(1.1);
     border-color: #4CAF50;
   }
 
-  /* Поле для смены темы */
-  .theme-toggle {
-    margin-top: 20px;
-    text-align: center;
+  /* Таймер и цитаты */
+  #timer {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  #quote {
+    font-style: italic;
+    margin-top: 10px;
   }
 
-  button {
-    cursor: pointer;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
+  /* Встроенный аудио */
+  #audioPlayer {
+    margin-top: 20px;
+  }
+
+  /* Форма обратной связи */
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+  }
+  input, textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button.submitBtn {
     background-color: #4CAF50;
     color: white;
-    font-size: 14px;
   }
 
-  button:hover {
-    background-color: #45a049;
+  /* Загрузка файла */
+  #fileInput {
+    margin-top: 10px;
   }
+
+  /* Кнопка для случайных цитат */
+  .quote-btn {
+    margin-top: 10px;
+  }
+
+  /* Кнопка для смены темы */
 </style>
 </head>
 <body class="light">
 
 <header>
-  <h1>Лучший сайт с множеством функций!</h1>
+  <h1>Самый функциональный сайт!</h1>
 </header>
 
 <nav>
   <button onclick="showSection('home')">Главная</button>
   <button onclick="showSection('cards')">Карточки</button>
   <button onclick="showSection('gallery')">Галерея</button>
-  <button onclick="showSection('settings')">Настройки</button>
+  <button onclick="showSection('feedback')">Обратная связь</button>
+  <button onclick="showSection('timerSection')">Таймер</button>
+  <button onclick="showSection('quotes')">Цитаты</button>
+  <button onclick="showSection('music')">Музыка</button>
+  <button onclick="showSection('upload')">Загрузка файла</button>
+  <button onclick="toggleTheme()">Тема</button>
 </nav>
 
 <!-- Раздел "Главная" -->
 <div id="home" class="section active">
   <h2>Добро пожаловать!</h2>
-  <p>Здесь ты найдёшь разные функции и развлечения.</p>
-  <button onclick="changeGreeting()">Кликни меня!</button>
-  <p id="greeting">Привет! Надеюсь, тебе нравится этот сайт.</p>
+  <p>Это очень крутой сайт со множеством функций.</p>
+  <button onclick="changeGreeting()">Кликни на меня</button>
+  <p id="greeting">Надеюсь, тебе нравится этот сайт!</p>
 </div>
 
-<!-- Раздел "Карточки" -->
+<!-- Карточки -->
 <div id="cards" class="section">
-  <h2>Карточки с информацией</h2>
+  <h2>Карточки</h2>
   <div class="cards">
     <div class="card">
-      <h3>Карточка 1</h3>
-      <p>Это первая карточка. Тут можно разместить описание.</p>
+      <h3>Мой любимый язык</h3>
+      <p>JavaScript — круто для всего!</p>
     </div>
     <div class="card">
-      <h3>Карточка 2</h3>
-      <p>Вторая карточка. Информация может быть любой.</p>
+      <h3>Интересный факт</h3>
+      <p>HTML — язык разметки страниц.</p>
     </div>
     <div class="card">
-      <h3>Карточка 3</h3>
-      <p>А это третья. Многофункционально!</p>
+      <h3>Совет</h3>
+      <p>Делайте перерывы и не забудьте отдыхать.</p>
     </div>
   </div>
 </div>
 
-<!-- Раздел "Галерея" -->
+<!-- Галерея -->
 <div id="gallery" class="section">
   <h2>Галерея изображений</h2>
   <div class="gallery" id="imageGallery">
@@ -172,49 +193,116 @@
     <img src="https://via.placeholder.com/100?text=4" alt="Image 4" />
     <img src="https://via.placeholder.com/100?text=5" alt="Image 5" />
   </div>
-  <h3>Кликните на изображение чтобы увеличить:</h3>
-  <img id="largeImage" src="" alt="" style="max-width: 80%; display: none; margin-top: 20px; border: 2px solid #333; border-radius: 8px;" />
+  <h3>Кликните чтобы увеличить</h3>
+  <img id="largeImage" src="" alt="" style="max-width:80%; display:none; margin-top:20px; border:2px solid #333; border-radius:8px;" />
 </div>
 
-<!-- Раздел "Настройки" -->
-<div id="settings" class="section">
-  <h2>Настройки темы</h2>
-  <div class="theme-toggle">
-    <button onclick="toggleTheme()">Переключить тему (светлая / тёмная)</button>
-  </div>
+<!-- Обратная связь -->
+<div id="feedback" class="section">
+  <h2>Обратная связь</h2>
+  <form id="feedbackForm">
+    <input type="text" id="name" placeholder="Ваше имя" required />
+    <textarea id="message" placeholder="Ваше сообщение" rows="4" required></textarea>
+    <button class="submitBtn" type="submit">Отправить</button>
+  </form>
+  <div id="formResult"></div>
+</div>
+
+<!-- Таймер -->
+<div id="timerSection" class="section">
+  <h2>Таймер (Отсчет)</h2>
+  <p>Введите секунды:</p>
+  <input type="number" id="secondsInput" min="1" />
+  <button onclick="startTimer()">Запуск</button>
+  <div id="timer">0</div>
+</div>
+
+<!-- Цитаты -->
+<div id="quotes" class="section">
+  <h2>Цитата дня</h2>
+  <div id="quote"></div>
+  <button class="quote-btn" onclick="showRandomQuote()">Показать случайную цитату</button>
+</div>
+
+<!-- Музыка -->
+<div id="music" class="section">
+  <h2>Музыкальный плеер</h2>
+  <audio id="audioPlayer" controls>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+    Ваш браузер не поддерживает аудио
+  </audio>
+</div>
+
+<!-- Загрузка файла -->
+<div id="upload" class="section">
+  <h2>Загрузить файл</h2>
+  <input type="file" id="fileInput" />
+  <div id="fileInfo"></div>
 </div>
 
 <script>
-  // Переключение разделов
+  // Функция переключения разделов
   function showSection(id) {
-    document.querySelectorAll('.section').forEach(section => {
-      section.classList.remove('active');
-    });
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  // Функция для смены приветствия
+  // Всплывающее приветствие
   function changeGreeting() {
-    const greeting = document.getElementById('greeting');
-    greeting.innerText = 'Ты нажал на кнопку! Молодец!';
+    document.getElementById('greeting').innerText = 'Это обновленное сообщение! Отлично!';
   }
 
-  // Галерея: увеличение изображения при клике
-  document.getElementById('imageGallery').addEventListener('click', function(e) {
+  // Галерея - увеличение изображения по клику
+  document.getElementById('imageGallery').addEventListener('click', e => {
     if (e.target.tagName === 'IMG') {
-      const largeImg = document.getElementById('largeImage');
-      largeImg.src = e.target.src;
-      largeImg.style.display = 'block';
-      largeImg.alt = e.target.alt;
+      document.getElementById('largeImage').src = e.target.src;
+      document.getElementById('largeImage').style.display = 'block';
     }
   });
 
-  // Переключение темы
+  // Темы
   function toggleTheme() {
     document.body.classList.toggle('dark');
     document.body.classList.toggle('light');
   }
-</script>
 
-</body>
-</html>
+  // Обратная связь
+  document.getElementById('feedbackForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+    document.getElementById('formResult').innerText = `Спасибо, ${name}! Ваше сообщение получено.`;
+    e.target.reset();
+  });
+
+  // Таймер
+  let timerId = null;
+  function startTimer() {
+    if (timerId) clearInterval(timerId);
+    let seconds = parseInt(document.getElementById('secondsInput').value);
+    if (isNaN(seconds) || seconds < 1) {
+      alert('Пожалуйста, введите корректное число секунд');
+      return;
+    }
+    document.getElementById('timer').innerText = seconds;
+    timerId = setInterval(() => {
+      seconds--;
+      document.getElementById('timer').innerText = seconds;
+      if (seconds <= 0) {
+        clearInterval(timerId);
+        alert('Время закончилось!');
+      }
+    }, 1000);
+  }
+
+  // Цитаты
+  const quotesArray = [
+    "Жизнь — это 10% то, что с тобой происходит, и 90% — как ты на это реагируешь. — Чарльз Свинделл",
+    "Успех — это сумма маленьких усилий, повторённых день за днём. — Роберт Колльер",
+    "Лучший способ предсказать будущее — создать его. — Питер Друкер",
+    "Настойчив
+
+
+
+
+
